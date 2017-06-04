@@ -18,5 +18,8 @@ http://spark.apache.org/docs/latest/spark-standalone.html
 - transforms: http://spark.apache.org/docs/latest/programming-guide.html#transformations
 - actions: http://spark.apache.org/docs/latest/programming-guide.html#actions
 
-4. 
+4. Spark SQL
+
+- http://spark.apache.org/docs/latest/sql-programming-guide.html
+
     
