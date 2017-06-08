@@ -41,8 +41,13 @@ class ActorMessage(conf: SparkConf) extends Actor with ActorLogging {
   def getbeans(limit: Int) = Random.shuffle(beans).take(limit)
 
   override def receive: Actor.Receive = {
-    case View(limit) => session.createDataFrame(getbeans(limit)).createOrReplaceTempView("test")
-    case sql: String => session.sql(sql).show(100)
+    case View(limit) => {
+      session.createDataFrame(getbeans(limit)).createOrReplaceTempView("test")
+    }
+    case sql: String => {
+      log.info("receive sql:" + sql)
+      session.sql(sql).show(100)
+    }
     case _ => print("nothing")
   }
 

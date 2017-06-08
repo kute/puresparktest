@@ -10,6 +10,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-core_2.11" % "2.1.1",
   "org.apache.spark" % "spark-streaming_2.11" % "2.1.1",
   "org.apache.spark" % "spark-sql_2.11" % "2.1.1",
-  "com.typesafe.akka" % "akka-actor_2.11" % "2.5.1"
+  "com.typesafe.akka" % "akka-actor_2.11" % "2.5.1",
+  "mysql" % "mysql-connector-java" % "6.0.5"
 )
     
