@@ -32,6 +32,15 @@ http://spark.apache.org/docs/latest/spark-standalone.html
 
 - transformations on DStream: http://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams
 
+6. Configuration
+
+- http://spark.apache.org/docs/latest/configuration.html#spark-configuration
+
+7. 
+- SparkContext is managed on the driver
+- everything that happens inside transformations is executed on the workers. Each worker have access only to its own part of the data and don't communicate with other workers**.
+
+
 
 
     
