@@ -27,15 +27,13 @@ object Test {
       .getOrCreate()
 
     val list1: List[(String, Int)] = List("R1" -> 3, "R2" -> 5, "R3" -> 5, "R4" -> 5, "R5" -> 3)
-    val list2: List[((String, String), Double)] = List(("R1" -> "R3") -> 2, ("R2" -> "R3") -> 3, ("R2" -> "R5") -> 3, ("R1" -> "R2") -> 1)
+    val list2: List[(String, Int)] = List("R2" -> 51, "R3" -> 51, "R4" -> 51, "R5" -> 31)
     val rdd1 = spark.sparkContext.makeRDD(list1)
     val rdd2 = spark.sparkContext.makeRDD(list2)
 
-    val map = rdd1.collectAsMap()
+    rdd1.leftOuterJoin(rdd2).filter(t => t._2._2.isDefined).foreach(println)
 
-    rdd2.map(data => {
-      data._1 -> 0.5 * (map.getOrElse(data._1._1, 0) + map.getOrElse(data._1._2, 0))
-    })
+    spark.close()
   }
 
 }
