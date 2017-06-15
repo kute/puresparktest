@@ -22,6 +22,9 @@ object Test {
       .config("spark.rpc.askTimeout", "600s")
       //avoid conflict with default port with spark-shell
       .config("spark.ui.port", 4042)
+//      访问控制：http://spark.apache.org/docs/latest/configuration.html#security
+      .config("spark.acls.enable", true)
+      .config("spark.admin.acls", "lilei,longbai") //* 表示任何人
       .appName("spark test")
       .master("local[*]")
       .getOrCreate()

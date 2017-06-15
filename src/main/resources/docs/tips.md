@@ -39,6 +39,8 @@ http://spark.apache.org/docs/latest/spark-standalone.html
 7. 
 - SparkContext is managed on the driver
 - everything that happens inside transformations is executed on the workers. Each worker have access only to its own part of the data and don't communicate with other workers**.
+- Spark tolerant mechanism：Lineage（血统）和 Checkpoint（数据检查点）
+http://www.jianshu.com/p/99ebcc7c92d3
 
 
 
