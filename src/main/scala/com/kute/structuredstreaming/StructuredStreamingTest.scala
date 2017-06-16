@@ -1,8 +1,11 @@
 package com.kute.structuredstreaming
 
+import com.kute.LogLevelUtil
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types.StructType
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.slf4j.LoggerFactory
 
 /**
  * Created by longbai on 2017/6/15.
@@ -24,6 +27,7 @@ object StructuredStreamingTest {
 
     import spark.implicits._
 
+    // input table
     val linesDF = spark.readStream.format("socket")
     .option("host", "localhost")
     .option("port", 1572)
@@ -35,12 +39,16 @@ object StructuredStreamingTest {
       .flatMap(_.split(" "))
 
     wordsDS.printSchema()
-
+    // result table
     val wordsCountDF = wordsDS.groupBy("value").count()
 
     wordsCountDF.printSchema()
-    /* set up query end here, and start begin */
-    val query = wordsCountDF.writeStream.outputMode("complete").format("console").start()
+
+    /* set up query end here, and start begin with writestream.start() */
+    val query = wordsCountDF.writeStream
+      .outputMode("complete") // complete append update
+      .format("console")
+      .start()
 
     query.awaitTermination()
 
