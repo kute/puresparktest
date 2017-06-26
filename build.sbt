@@ -1,3 +1,5 @@
+organization := "com.kute"
+
 name := "puresparktest"
 
 version := "1.0"
@@ -13,6 +15,9 @@ libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-streaming-flume_2.11" % "2.1.1",
   "org.apache.spark" % "spark-sql_2.11" % "2.1.1",
   "com.typesafe.akka" % "akka-actor_2.11" % "2.5.1",
-  "mysql" % "mysql-connector-java" % "6.0.5"
+  "mysql" % "mysql-connector-java" % "6.0.5",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
 )
+
+scalacOptions ++= Seq("-deprecation", "-unchecked")
     

@@ -1,6 +1,6 @@
 package com.kute.structuredstreaming
 
-import com.kute.LogLevelUtil
+import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.StructType
@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory
  * Created by longbai on 2017/6/15.
  */
 
-object StructuredStreamingTest {
+object StructuredStreamingTest extends LazyLogging{
 
   val checkPoint = "checkpoint"
 
@@ -22,6 +22,9 @@ object StructuredStreamingTest {
       .set("spark.executor.heartbeatInterval", "3500s")
       .set("spark.rpc.askTimeout", "600s")
       .set("spark.worker.memory", "2g")
+      .set("spark.authenticate", "true")
+      .set("spark.authenticate.secret", "======secret===")
+      .set("spark.ui.filters", "com.kute.filters.CustomFilter")
 
     val spark = SparkSession.builder().appName("spark structured streaming").config(conf).getOrCreate()
 
@@ -33,6 +36,8 @@ object StructuredStreamingTest {
     .option("port", 1572)
     .load()
 
+    logger.warn("warn")
+    logger.info("ssssssss")
     /* set up query */
     val wordsDS = linesDF
       .as[String] // DataFrame to DataSet

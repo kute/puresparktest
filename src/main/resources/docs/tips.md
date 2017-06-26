@@ -41,6 +41,7 @@ http://spark.apache.org/docs/latest/spark-standalone.html
 - everything that happens inside transformations is executed on the workers. Each worker have access only to its own part of the data and don't communicate with other workers**.
 - Spark tolerant mechanism：Lineage（血统）和 Checkpoint（数据检查点）
 http://www.jianshu.com/p/99ebcc7c92d3
+- 对于有聚集函数的操作如sum ave，reduceByKey比groupByKey有更好的性能，因为reduct可以在移动每个分区之前，先按key合并本分区的数据；而groupbykey没有可接收的函数参数，需要把所有分区的数据都移到一个分区中，然后再合并，开销较大
 
 
 
