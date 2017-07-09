@@ -39,9 +39,9 @@ http://spark.apache.org/docs/latest/spark-standalone.html
 7. 
 - SparkContext is managed on the driver
 - everything that happens inside transformations is executed on the workers. Each worker have access only to its own part of the data and don't communicate with other workers**.
-- Spark tolerant mechanism£ºLineage£¨ÑªÍ³£©ºÍ Checkpoint£¨Êı¾İ¼ì²éµã£©
+- Spark tolerant mechanismï¼šLineageï¼ˆè¡€ç»Ÿï¼‰å’Œ Checkpointï¼ˆæ•°æ®æ£€æŸ¥ç‚¹ï¼‰
 http://www.jianshu.com/p/99ebcc7c92d3
-- ¶ÔÓÚÓĞ¾Û¼¯º¯ÊıµÄ²Ù×÷Èçsum ave£¬reduceByKey±ÈgroupByKeyÓĞ¸üºÃµÄĞÔÄÜ£¬ÒòÎªreduct¿ÉÒÔÔÚÒÆ¶¯Ã¿¸ö·ÖÇøÖ®Ç°£¬ÏÈ°´keyºÏ²¢±¾·ÖÇøµÄÊı¾İ£»¶øgroupbykeyÃ»ÓĞ¿É½ÓÊÕµÄº¯Êı²ÎÊı£¬ĞèÒª°ÑËùÓĞ·ÖÇøµÄÊı¾İ¶¼ÒÆµ½Ò»¸ö·ÖÇøÖĞ£¬È»ºóÔÙºÏ²¢£¬¿ªÏú½Ï´ó
+- å¯¹äºæœ‰èšé›†å‡½æ•°çš„æ“ä½œå¦‚sum aveï¼ŒreduceByKeyæ¯”groupByKeyæœ‰æ›´å¥½çš„æ€§èƒ½ï¼Œå› ä¸ºreductå¯ä»¥åœ¨ç§»åŠ¨æ¯ä¸ªåˆ†åŒºä¹‹å‰ï¼Œå…ˆæŒ‰keyåˆå¹¶æœ¬åˆ†åŒºçš„æ•°æ®ï¼›è€Œgroupbykeyæ²¡æœ‰å¯æ¥æ”¶çš„å‡½æ•°å‚æ•°ï¼Œéœ€è¦æŠŠæ‰€æœ‰åˆ†åŒºçš„æ•°æ®éƒ½ç§»åˆ°ä¸€ä¸ªåˆ†åŒºä¸­ï¼Œç„¶åå†åˆå¹¶ï¼Œå¼€é”€è¾ƒå¤§
 
 
 

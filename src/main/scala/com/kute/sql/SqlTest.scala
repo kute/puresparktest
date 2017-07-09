@@ -4,6 +4,7 @@ import java.util.Properties
 
 import org.apache.spark.sql.{SaveMode, Encoders, SparkSession}
 
+import scala.collection.immutable.BitSet
 import scala.reflect.ClassTag
 
 /**
@@ -66,7 +67,6 @@ object SqlTest {
     df.filter($"age" > 19).show()
 
     df.groupBy("name").count().show()
-
     //    session-scoped
     df.createOrReplaceTempView("personTable")
 

@@ -3,6 +3,7 @@ package com.kute.structuredstreaming
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.streaming.ProcessingTime
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.slf4j.LoggerFactory
@@ -37,7 +38,6 @@ object StructuredStreamingTest extends LazyLogging{
     .load()
 
     logger.warn("warn")
-    logger.info("ssssssss")
     /* set up query */
     val wordsDS = linesDF
       .as[String] // DataFrame to DataSet
@@ -51,8 +51,17 @@ object StructuredStreamingTest extends LazyLogging{
 
     /* set up query end here, and start begin with writestream.start() */
     val query = wordsCountDF.writeStream
-      .outputMode("complete") // complete append update
+      .outputMode("complete") // complete, append, update
+
+      // 在控制台输出,支持多种输出: http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#output-sinks
       .format("console")
+
+//      .format("parquet").option("checkpointLocation", "path/to/checkpoint/dir").option("path", "path/of/parquet")
+//      .format("csv").option("path", "path/of/csv/file/to/save")
+      .format("memory").queryName("table_name_in_memory")
+
+
+      .trigger(ProcessingTime("interval 10 seconds"))
       .start()
 
     query.awaitTermination()
