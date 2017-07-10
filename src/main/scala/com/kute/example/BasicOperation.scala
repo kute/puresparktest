@@ -35,6 +35,7 @@ object BasicOperation {
       val df = session.read.option("header","true").csv(file)
       df.take(10).foreach(println)
 
+
     } finally {
       sc.stop()
     }

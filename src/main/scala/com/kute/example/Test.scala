@@ -8,6 +8,7 @@ import org.apache.spark.sql.SparkSession
 
 import scala.collection.JavaConverters._
 import org.apache.spark.util.Utils
+import scala.collection.generic.CanBuildFrom
 
 object Test {
 
@@ -28,6 +29,7 @@ object Test {
       .appName("spark test")
       .master("local[*]")
       .getOrCreate()
+    """asdf""".stripMargin
 
     val list1: List[(String, Int)] = List("R1" -> 3, "R2" -> 5, "R3" -> 5, "R4" -> 5, "R5" -> 3)
     val list2: List[(String, Int)] = List("R2" -> 51, "R3" -> 51, "R4" -> 51, "R5" -> 31)

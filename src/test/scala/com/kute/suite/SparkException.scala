@@ -7,6 +7,8 @@ object SparkException {
 
   case object SparkContextAlreadyInitialized extends IllegalStateException
 
+  case object StreaingContextAlreadyInitialized extends IllegalStateException
+
   case class SparkConfigAfterInitialization(confs: Seq[(String, String)])
     extends IllegalStateException(
       s"Attempting to configure SparkContext after initialization:\n" +
